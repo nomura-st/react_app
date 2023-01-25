@@ -1,0 +1,835 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/db1"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model hm001_shain {
+  shain_cd    String  @id(map: "hm001_shain_pkc") @db.VarChar
+  password    String? @db.VarChar
+  mail_adr    String? @db.VarChar
+  access_ken  String? @db.VarChar
+  sakujo_flag String? @db.VarChar
+}
+
+model hm002_iryokikan {
+  iryo_kikan_cd  Int     @id(map: "hm002_iryokikan_pkc") @default(autoincrement())
+  iryo_kikan_mei String? @db.VarChar
+  hanrei         String? @db.VarChar
+  jusho          String? @db.VarChar
+  tel            String? @db.VarChar
+  fax            String? @db.VarChar
+  sakujo_flag    String? @db.VarChar
+}
+
+model hm003_kenshinkomoku {
+  item_cd         String  @id(map: "hm003_kenshinkomoku_pkc") @db.VarChar
+  item_column_mei String? @db.VarChar
+  item_mei        String? @db.VarChar
+  item_order      Int?
+  item_type       String? @db.VarChar
+  sakujo_flag     String? @db.VarChar
+
+  @@index([item_order])
+}
+
+model hm005_henkan {
+  change_cd   String  @id(map: "hm005_henkan_pkc") @db.VarChar
+  cng_before1 String? @db.VarChar
+  cng_after1  String? @db.VarChar
+  cng_before2 String? @db.VarChar
+  cng_after2  String? @db.VarChar
+  cng_before3 String? @db.VarChar
+  cng_after3  String? @db.VarChar
+  cng_before4 String? @db.VarChar
+  cng_after4  String? @db.VarChar
+  cng_before5 String? @db.VarChar
+  cng_after5  String? @db.VarChar
+  cng_before6 String? @db.VarChar
+  cng_after6  String? @db.VarChar
+  cng_before7 String? @db.VarChar
+  cng_after7  String? @db.VarChar
+  cng_before8 String? @db.VarChar
+  cng_after8  String? @db.VarChar
+  sakujo_flag String? @db.VarChar
+}
+
+model hm006_shanaihantei {
+  shanai_judge_name  String  @db.VarChar
+  shanai_judge_group String  @db.VarChar
+  judge_kijun        String? @db.VarChar
+  sakujo_flag        String? @db.VarChar
+
+  @@id([shanai_judge_name, shanai_judge_group], map: "hm006_shanaihantei_pkc")
+}
+
+model hm010_yoyakujoho {
+  jikantai_cd  String  @id(map: "hm010_yoyakujoho_pkc") @db.VarChar
+  kaishi_jikan String? @db.VarChar
+  category     String? @db.VarChar
+  sakujo_flag  String? @db.VarChar
+}
+
+model hm011_gamen {
+  access_ken  String  @db.VarChar
+  gamen_id    String  @db.VarChar
+  gamen_mei   String  @db.VarChar
+  is_openable String? @db.VarChar
+  sakujo_flag String? @db.VarChar
+
+  @@id([access_ken, gamen_id], map: "hm011_gamen_pkc")
+}
+
+model hm012_shokushu {
+  eigyosho_cd String  @db.VarChar
+  bumon_cd    String  @db.VarChar
+  bumon_mei   String? @db.VarChar
+  shokushu    String? @db.VarChar
+  sakujo_flag String? @db.VarChar
+
+  @@id([eigyosho_cd, bumon_cd], map: "hm012_shokushu_pkc")
+}
+
+model ht001_yoyaku {
+  hokenshi_cd       String   @db.VarChar
+  mendanbi          DateTime @db.Date
+  jikantai_cd       String   @db.VarChar
+  shain_cd          String?  @db.VarChar
+  yoyakusha_cd      String?  @db.VarChar
+  mendan_tanto_flag String?  @db.VarChar
+  sakujo_flag       String?  @db.VarChar
+
+  @@id([hokenshi_cd, mendanbi, jikantai_cd], map: "ht001_yoyaku_pkc")
+}
+
+model ht002_kenshinkekka {
+  shain_cd                              String    @db.VarChar
+  shain_name                            String?   @db.VarChar
+  shain_name_kana                       String?   @db.VarChar
+  seinengappi                           DateTime? @db.Date
+  seibetsu                              String?   @db.VarChar
+  iryo_kikan_cd                         Int?
+  nenrei                                String?   @db.VarChar
+  jushinji_nenrei                       String?   @db.VarChar
+  kenshinbi                             DateTime  @db.Date
+  kenshin_kaijo                         String?   @db.VarChar
+  kenshin_course                        String?   @db.VarChar
+  kenshin_no                            String?   @db.VarChar
+  jushin_no                             String?   @db.VarChar
+  iryo_kikan_org                        String?   @db.VarChar
+  dantai_name                           String?   @db.VarChar
+  tokushoku                             String?   @db.VarChar
+  monshin1                              String?   @db.VarChar
+  monshin2                              String?   @db.VarChar
+  monshin3                              String?   @db.VarChar
+  shokugo_jikan                         String?   @db.VarChar
+  kiosho                                String?   @db.VarChar
+  chiryochu                             String?   @db.VarChar
+  kitsuenreki                           String?   @db.VarChar
+  kitsuenreki_shosai                    String?   @db.VarChar
+  inshu                                 String?   @db.VarChar
+  inshu_shosai                          String?   @db.VarChar
+  ketsuekigata                          String?   @db.VarChar
+  ketsuekigata_rh                       String?   @db.VarChar
+  sogo_judge                            String?   @db.VarChar
+  sogo_shoken                           String?   @db.VarChar
+  shinsatsu_judge                       String?   @db.VarChar
+  shinsatsu                             String?   @db.VarChar
+  add_item1                             String?   @db.VarChar
+  shoken1                               String?   @db.VarChar
+  add_item2                             String?   @db.VarChar
+  shoken2                               String?   @db.VarChar
+  add_item3                             String?   @db.VarChar
+  shoken3                               String?   @db.VarChar
+  add_item4                             String?   @db.VarChar
+  shoken4                               String?   @db.VarChar
+  add_item5                             String?   @db.VarChar
+  shoken5                               String?   @db.VarChar
+  taisoku_judge                         String?   @db.VarChar
+  shincho                               String?   @db.VarChar
+  taiju                                 String?   @db.VarChar
+  hukui                                 String?   @db.VarChar
+  hukui_sokuteiho                       String?   @db.VarChar
+  naizoshibo_menseki                    String?   @db.VarChar
+  std_taiju                             String?   @db.VarChar
+  bmi                                   String?   @db.VarChar
+  bmi_judge                             String?   @db.VarChar
+  bmi_shoken                            String?   @db.VarChar
+  taishibo                              String?   @db.VarChar
+  himando                               String?   @db.VarChar
+  himando_judge                         String?   @db.VarChar
+  choryoku_judge                        String?   @db.VarChar
+  choryoku_shoken                       String?   @db.VarChar
+  kaiwaho_r                             String?   @db.VarChar
+  kaiwaho_r_shoken                      String?   @db.VarChar
+  kaiwaho_l                             String?   @db.VarChar
+  kaiwaho_l_shoken                      String?   @db.VarChar
+  choryoku_1000hz_r                     String?   @db.VarChar
+  choryoku_1000hz_l                     String?   @db.VarChar
+  choryoku_4000hz_r                     String?   @db.VarChar
+  choryoku_4000hz_l                     String?   @db.VarChar
+  shiryoku_judge                        String?   @db.VarChar
+  shiryoku_shoken                       String?   @db.VarChar
+  enten_ragan_r                         String?   @db.VarChar
+  enten_ragan_l                         String?   @db.VarChar
+  enten_kyosei_r                        String?   @db.VarChar
+  enten_kyosei_l                        String?   @db.VarChar
+  kinten_ragan_r                        String?   @db.VarChar
+  kinten_ragan_l                        String?   @db.VarChar
+  kinten_kyosei_r                       String?   @db.VarChar
+  kinten_kyosei_l                       String?   @db.VarChar
+  gantei_judge                          String?   @db.VarChar
+  gantei_shoken                         String?   @db.VarChar
+  gantei_h                              String?   @db.VarChar
+  gantei_kw                             String?   @db.VarChar
+  gantei_s                              String?   @db.VarChar
+  gantei_scott                          String?   @db.VarChar
+  ganatsu_judge                         String?   @db.VarChar
+  ganatsu_shoken                        String?   @db.VarChar
+  ganatsu_r                             String?   @db.VarChar
+  ganatsu_l                             String?   @db.VarChar
+  ketsuatsu_judge                       String?   @db.VarChar
+  ketsuatsu_shoken                      String?   @db.VarChar
+  ketsuatsu1_u                          String?   @db.VarChar
+  ketsuatsu1_d                          String?   @db.VarChar
+  ketsuatsu2_u                          String?   @db.VarChar
+  ketsuatsu2_d                          String?   @db.VarChar
+  ketsuatsu_myakuhaku                   String?   @db.VarChar
+  totaisha_judge                        String?   @db.VarChar
+  totaisha_shoken                       String?   @db.VarChar
+  totaisha_shokugo                      String?   @db.VarChar
+  totaisha_ketto                        String?   @db.VarChar
+  totaisha_hba1c                        String?   @db.VarChar
+  totaisha_hba1c_j                      String?   @db.VarChar
+  hakkekyu_judge                        String?   @db.VarChar
+  hakkekyu_shoken                       String?   @db.VarChar
+  hakkekyu_kyusu                        String?   @db.VarChar
+  ketsueki_youketsu                     String?   @db.VarChar
+  ketsueki_nyubi                        String?   @db.VarChar
+  hinketsu_judge                        String?   @db.VarChar
+  hinketsu_ketsueki_syoken              String?   @db.VarChar
+  hinketsu_sekkekyu_kyusu               String?   @db.VarChar
+  hinketsu_kessyokusoryo                String?   @db.VarChar
+  hinketsu_hct                          String?   @db.VarChar
+  hinketsu_mcv                          String?   @db.VarChar
+  hinketsu_mch                          String?   @db.VarChar
+  hinketsu_mchc                         String?   @db.VarChar
+  other_shoken                          String?   @db.VarChar
+  other_kesshoban                       String?   @db.VarChar
+  ibu_xsen_judge                        String?   @db.VarChar
+  ibu_xsen_toeibi                       DateTime? @db.Date
+  ibu_xsen_kubun                        String?   @db.VarChar
+  ibu_xsen_no                           String?   @db.VarChar
+  ibu_xsen_shoken1                      String?   @db.VarChar
+  ibu_xsen_shoken2                      String?   @db.VarChar
+  ibu_xsen_shoken3                      String?   @db.VarChar
+  ibu_xsen_shoken4                      String?   @db.VarChar
+  ibu_xsen_shoken5                      String?   @db.VarChar
+  ibu_xsen_bui                          String?   @db.VarChar
+  ibu_xsen_other                        String?   @db.VarChar
+  naishikyo_judge                       String?   @db.VarChar
+  naishikyo_shoken1                     String?   @db.VarChar
+  naishikyo_shoken2                     String?   @db.VarChar
+  naishikyo_shoken3                     String?   @db.VarChar
+  naishikyo_shoken4                     String?   @db.VarChar
+  naishikyo_shoken5                     String?   @db.VarChar
+  shindenzu_judge                       String?   @db.VarChar
+  shindenzu_shoken1                     String?   @db.VarChar
+  shindenzu_shoken2                     String?   @db.VarChar
+  shindenzu_shoken3                     String?   @db.VarChar
+  shindenzu_shoken4                     String?   @db.VarChar
+  shindenzu_shoken5                     String?   @db.VarChar
+  shindenzu_anseiji1                    String?   @db.VarChar
+  shindenzu_anseiji2                    String?   @db.VarChar
+  shindenzu_anseiji3                    String?   @db.VarChar
+  shindenzu_anseiji4                    String?   @db.VarChar
+  shindenzu_anseiji5                    String?   @db.VarChar
+  kyobu_xsen_judge                      String?   @db.VarChar
+  kyobu_xsen_toeibi                     DateTime? @db.Date
+  kyobu_xsen_kubun                      String?   @db.VarChar
+  kyobu_xsen_no                         String?   @db.VarChar
+  kyobu_xsen_shoken1                    String?   @db.VarChar
+  kyobu_xsen_shoken2                    String?   @db.VarChar
+  kyobu_xsen_shoken3                    String?   @db.VarChar
+  kyobu_xsen_shoken4                    String?   @db.VarChar
+  kyobu_xsen_shoken5                    String?   @db.VarChar
+  kyobu_xsen_bui_shoken_r               String?   @db.VarChar
+  kyobu_xsen_bui_shoken_l               String?   @db.VarChar
+  choonpa_judge                         String?   @db.VarChar
+  choonpa_shoken1                       String?   @db.VarChar
+  choonpa_shoken2                       String?   @db.VarChar
+  choonpa_shoken3                       String?   @db.VarChar
+  choonpa_shoken4                       String?   @db.VarChar
+  choonpa_shoken5                       String?   @db.VarChar
+  choonpa_kanzo                         String?   @db.VarChar
+  choonpa_tanno                         String?   @db.VarChar
+  choonpa_tankan                        String?   @db.VarChar
+  choonpa_jinzo                         String?   @db.VarChar
+  choonpa_suizo                         String?   @db.VarChar
+  choonpa_other                         String?   @db.VarChar
+  choonpa_shinzo                        String?   @db.VarChar
+  choonpa_kanzo_shoken                  String?   @db.VarChar
+  choonpa_tanno_shoken                  String?   @db.VarChar
+  choonpa_tankan_shoken                 String?   @db.VarChar
+  choonpa_jinzo_shoken                  String?   @db.VarChar
+  choonpa_suizo_shoken                  String?   @db.VarChar
+  choonpa_other_shoken                  String?   @db.VarChar
+  choonpa_shinzo_shoken                 String?   @db.VarChar
+  shikikaku_judge                       String?   @db.VarChar
+  shikikaku_shoken                      String?   @db.VarChar
+  kankino_judge                         String?   @db.VarChar
+  kankino_shoken                        String?   @db.VarChar
+  kankino_got                           String?   @db.VarChar
+  kankino_gpt                           String?   @db.VarChar
+  kankino_alp                           String?   @db.VarChar
+  kankino_che                           String?   @db.VarChar
+  kankino_gtp                           String?   @db.VarChar
+  kankino_ldh                           String?   @db.VarChar
+  kankino_ztt                           String?   @db.VarChar
+  kankino_sotanpaku                     String?   @db.VarChar
+  kankino_ag                            String?   @db.VarChar
+  kankino_d_bil                         String?   @db.VarChar
+  kankino_t_bil                         String?   @db.VarChar
+  kankino_hbs                           String?   @db.VarChar
+  kankino_hcv                           String?   @db.VarChar
+  kankino_hcv_value                     String?   @db.VarChar
+  suikino_judge                         String?   @db.VarChar
+  suikino_shoken                        String?   @db.VarChar
+  suikino_amylase                       String?   @db.VarChar
+  ketchushishitsu_judge                 String?   @db.VarChar
+  ketchushishitsu_shoken                String?   @db.VarChar
+  ketchushishitsu_socho                 String?   @db.VarChar
+  ketchushishitsu_chusei                String?   @db.VarChar
+  ketchushishitsu_hdl                   String?   @db.VarChar
+  ketchushishitsu_ldl                   String?   @db.VarChar
+  daicho_judge                          String?   @db.VarChar
+  daicho_shoken                         String?   @db.VarChar
+  daicho_benkessen                      String?   @db.VarChar
+  daicho_hanno1                         String?   @db.VarChar
+  daicho_hanno2                         String?   @db.VarChar
+  kakutan_judge                         String?   @db.VarChar
+  kakutan_shoken                        String?   @db.VarChar
+  nyosan_judge                          String?   @db.VarChar
+  nyosan_shoken                         String?   @db.VarChar
+  nyosan_chi                            String?   @db.VarChar
+  nyosan_naiyo                          String?   @db.VarChar
+  jinkino_judge                         String?   @db.VarChar
+  jinkino_shoken                        String?   @db.VarChar
+  jinkino_nyoso                         String?   @db.VarChar
+  jinkino_cre                           String?   @db.VarChar
+  jinkino_egfr                          String?   @db.VarChar
+  enshokei_judge                        String?   @db.VarChar
+  enshokei_shoken                       String?   @db.VarChar
+  enshokei_crp                          String?   @db.VarChar
+  enshokei_rf_teisei                    String?   @db.VarChar
+  enshokei_rf_teiryo                    String?   @db.VarChar
+  kennyo_judge                          String?   @db.VarChar
+  kennyo_shoken                         String?   @db.VarChar
+  kennyo_tanpaku                        String?   @db.VarChar
+  kennyo_tanpaku_judge                  String?   @db.VarChar
+  kennyo_nyokessen                      String?   @db.VarChar
+  kennyo_nyokessen_judge                String?   @db.VarChar
+  kennyo_nyoto                          String?   @db.VarChar
+  kennyo_nyoto_judge                    String?   @db.VarChar
+  kennyo_nyouro                         String?   @db.VarChar
+  kennyo_nyouro_judge                   String?   @db.VarChar
+  haikinou_judge                        String?   @db.VarChar
+  haikinou_shoken                       String?   @db.VarChar
+  haikinou_haikatsuryo                  String?   @db.VarChar
+  haikinou_doryokuseihaikatsuryo        String?   @db.VarChar
+  haikinou_percentdoryokuseihaikatsuryo String?   @db.VarChar
+  haikinou_hihaikatsuryo                String?   @db.VarChar
+  haikinou_ichibyouryo                  String?   @db.VarChar
+  haikinou_ichibyouritsu                String?   @db.VarChar
+  haikinou_percentichibyouryo           String?   @db.VarChar
+  shikyu_judge                          String?   @db.VarChar
+  shikyu_shoken                         String?   @db.VarChar
+  shikyu_seiri                          String?   @db.VarChar
+  shikyu_saiboushin1                    String?   @db.VarChar
+  shikyu_saiboushin2                    String?   @db.VarChar
+  shikyu_saiboushin_hosoku              String?   @db.VarChar
+  shikyu_shikyunaishin1                 String?   @db.VarChar
+  nyubou_judge                          String?   @db.VarChar
+  nyubou_shoken                         String?   @db.VarChar
+  nyubou_choonpa_r                      String?   @db.VarChar
+  nyubou_choonpa_l                      String?   @db.VarChar
+  nyubou_mammo_r                        String?   @db.VarChar
+  nyubou_mammo_l                        String?   @db.VarChar
+  jikakushojo1                          String?   @db.VarChar
+  jikakushojo2                          String?   @db.VarChar
+  jikakushojo3                          String?   @db.VarChar
+  option_kensabi                        DateTime? @db.Date
+  option_abi                            String?   @db.VarChar
+  option_holter                         String?   @db.VarChar
+  sangyoi_judge                         String?   @db.VarChar
+  sangyoi_mei                           String?   @db.VarChar
+  judge_date                            DateTime? @db.Date
+  saikensa_result                       String?   @db.VarChar
+  saikensa_ryoshusho                    String?   @db.VarChar
+  saikensa_other                        String?   @db.VarChar
+  saikensa_temp1                        String?   @db.VarChar
+  saikensa_temp2                        String?   @db.VarChar
+  saikensa_temp3                        String?   @db.VarChar
+  saikensa_tsuchibi                     DateTime? @db.Date
+  saikensa_jushinbi                     DateTime? @db.Date
+  saikensa_shiji                        String?   @db.VarChar
+  hantei_yellowcard                     String?   @db.VarChar
+  hantei_metabo                         String?   @db.VarChar
+  hantei_option                         String?   @db.VarChar
+  hantei_other                          String?   @db.VarChar
+  shanaijudge_bmi                       String?   @db.VarChar
+  shanaishoken_bmi                      String?   @db.VarChar
+  shanaijudge_hukui                     String?   @db.VarChar
+  shanaishoken_hukui                    String?   @db.VarChar
+  shanaijudge_ketsuatsu                 String?   @db.VarChar
+  shanaishoken_ketsuatsu                String?   @db.VarChar
+  shanaijudge_ketto                     String?   @db.VarChar
+  shanaishoken_ketto                    String?   @db.VarChar
+  shanaijudge_hba1c                     String?   @db.VarChar
+  shanaishoken_hba1c                    String?   @db.VarChar
+  shanaijudge_sekkekyusu                String?   @db.VarChar
+  shanaishoken_sekkekyusu               String?   @db.VarChar
+  shanaijudge_kessyokusoryo             String?   @db.VarChar
+  shanaishoken_kessyokusoryo            String?   @db.VarChar
+  shanaijudge_got                       String?   @db.VarChar
+  shanaishoken_got                      String?   @db.VarChar
+  shanaijudge_gpt                       String?   @db.VarChar
+  shanaishoken_gpt                      String?   @db.VarChar
+  shanaijudge_gtp                       String?   @db.VarChar
+  shanaishoken_gtp                      String?   @db.VarChar
+  shanaijudge_chusei                    String?   @db.VarChar
+  shanaishoken_chusei                   String?   @db.VarChar
+  shanaijudge_hdl                       String?   @db.VarChar
+  shanaishoken_hdl                      String?   @db.VarChar
+  shanaijudge_ldl                       String?   @db.VarChar
+  shanaishoken_ldl                      String?   @db.VarChar
+  shanaijudge_nyotanpaku                String?   @db.VarChar
+  shanaishoken_nyotanpaku               String?   @db.VarChar
+  shanaijudge_nyoto                     String?   @db.VarChar
+  shanaishoken_nyoto                    String?   @db.VarChar
+  hukuyaku_ketsuatsu                    String?   @db.VarChar
+  hukuyaku_kettou                       String?   @db.VarChar
+  hukuyaku_shishitsu                    String?   @db.VarChar
+  tokutei_hoken_level                   String?   @db.VarChar
+  sakujo_flag                           String?   @db.VarChar
+
+  @@id([shain_cd, kenshinbi], map: "ht002_kenshinkekka_pkc")
+}
+
+model ht003_shidokiroku {
+  shido_kiroku_cd       Int       @default(autoincrement())
+  shain_cd              String    @db.VarChar
+  tanto                 String?   @db.VarChar
+  shido_jisshibi        DateTime? @db.Date
+  shido_jisshi_start    DateTime? @db.Time(6)
+  shido_jisshi_end      DateTime? @db.Time(6)
+  shido_mokuteki        String?   @db.VarChar
+  kanren_kenshinbi      DateTime? @db.Date
+  comments              String?   @db.VarChar
+  kioreki_tsuinkaishibi String?   @db.VarChar
+  tsuinjokyo_ka         String?   @db.VarChar
+  kai                   String?   @db.VarChar
+  kagetsu               String?   @db.VarChar
+  fukuyaku_jokyo        String?   @db.VarChar
+  koketsuatsu_memai     String?   @db.VarChar
+  koketsuatsu_zutsu     String?   @db.VarChar
+  koketsuatsu_doki      String?   @db.VarChar
+  junkanki_doki         String?   @db.VarChar
+  junkanki_ikigire      String?   @db.VarChar
+  junkanki_kyotsu       String?   @db.VarChar
+  junkanki_myakumidare  String?   @db.VarChar
+  junkanki_memai        String?   @db.VarChar
+  tonyobyo_kawaki       String?   @db.VarChar
+  tonyobyo_tsukare      String?   @db.VarChar
+  tonyobyo_hiyaase      String?   @db.VarChar
+  other                 String?   @db.VarChar
+  shugyo_seigen         String?   @db.VarChar
+  shugyo_jikan_start    DateTime? @db.Time(6)
+  shugyo_jikan_end      DateTime? @db.Time(6)
+  zangyo                String?   @db.VarChar
+  kyujitsu              String?   @db.VarChar
+  shugyo_jokyo_comment  String?   @db.VarChar
+  suimin_jikan_start    DateTime? @db.Time(6)
+  suimin_jikan_end      DateTime? @db.Time(6)
+  suimin_ryomin         String?   @db.VarChar
+  suimin_tochu_kakusei  String?   @db.VarChar
+  suimin_soshitsu       String?   @db.VarChar
+  suimin_shogai         String?   @db.VarChar
+  suimin_soki_kakusei   String?   @db.VarChar
+  ibiki                 String?   @db.VarChar
+  nemuke                String?   @db.VarChar
+  kazoku_kosei          String?   @db.VarChar
+  inshu_umu             String?   @db.VarChar
+  inshu_detail          String?   @db.VarChar
+  kitsuen_umu           String?   @db.VarChar
+  kitsuen               String?   @db.VarChar
+  suimin_comment        String?   @db.VarChar
+  shokuji_morning       String?   @db.VarChar
+  shokuji_noon          String?   @db.VarChar
+  shokuji_night         String?   @db.VarChar
+  kanshoku              String?   @db.VarChar
+  inryo                 String?   @db.VarChar
+  undo                  String?   @db.VarChar
+  kodo_mokuhyo          String?   @db.VarChar
+  sakujo_flag           String?   @db.VarChar
+
+  @@id([shido_kiroku_cd, shain_cd], map: "ht003_shidokiroku_pkc")
+  @@index([shido_jisshibi, shido_jisshi_start], map: "ht003_shidokiroku_shido_jisshibi_idx")
+}
+
+model ht004_tsuchibunsho {
+  bunsho_cd       Int     @id(map: "ht004_tsuchibunsho_pkc") @default(autoincrement())
+  shain_cd        String? @db.VarChar
+  bunsho_category String? @db.VarChar
+  bunsho_name     String? @db.VarChar
+  bunsho_title    String? @db.VarChar
+  bunsho_content  String? @db.VarChar
+  sakujo_flag     String? @db.VarChar
+}
+
+model ht005_importteigi {
+  teigi_cd      Int     @id(map: "ht005_importteigi_pkc") @default(autoincrement())
+  iryo_kikan_cd Int
+  teigi_mei     String  @db.VarChar
+  item_cd       String? @db.VarChar
+  change_cd     String? @db.VarChar
+  sakujo_flag   String? @db.VarChar
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model ht006_akusesulog {
+  shain_cd       String    @db.VarChar
+  log_no         Int       @default(autoincrement())
+  kino_mei       String?   @db.VarChar
+  naiyo          String?   @db.VarChar
+  toroku_nichiji DateTime? @db.Timestamp(6)
+  ip             String?   @db.VarChar
+  detail         String?   @db.VarChar
+  sakujo_flag    String?   @db.VarChar
+
+  @@index([toroku_nichiji, log_no], map: "ht006_akusesulog_toroku_nichiji_idx")
+  @@ignore
+}
+
+model ht007_kenshinkekka_reg_error {
+  error_cd                              Int       @id(map: "ht007_kenshinkekka_reg_error_pkc") @default(autoincrement())
+  error_tourokubi                       DateTime? @db.Date
+  error_koushinbi                       DateTime? @db.Date
+  error_type                            String?   @db.VarChar
+  error_detail                          String?   @db.VarChar
+  shain_cd                              String?   @db.VarChar
+  shain_name                            String?   @db.VarChar
+  shain_name_kana                       String?   @db.VarChar
+  seinengappi                           DateTime? @db.Date
+  seibetsu                              String?   @db.VarChar
+  iryo_kikan_cd                         Int?
+  nenrei                                String?   @db.VarChar
+  jushinji_nenrei                       String?   @db.VarChar
+  kenshinbi                             DateTime? @db.Date
+  kenshin_kaijo                         String?   @db.VarChar
+  kenshin_course                        String?   @db.VarChar
+  kenshin_no                            String?   @db.VarChar
+  jushin_no                             String?   @db.VarChar
+  iryo_kikan_org                        String?   @db.VarChar
+  dantai_name                           String?   @db.VarChar
+  tokushoku                             String?   @db.VarChar
+  monshin1                              String?   @db.VarChar
+  monshin2                              String?   @db.VarChar
+  monshin3                              String?   @db.VarChar
+  shokugo_jikan                         String?   @db.VarChar
+  kiosho                                String?   @db.VarChar
+  chiryochu                             String?   @db.VarChar
+  kitsuenreki                           String?   @db.VarChar
+  kitsuenreki_shosai                    String?   @db.VarChar
+  inshu                                 String?   @db.VarChar
+  inshu_shosai                          String?   @db.VarChar
+  ketsuekigata                          String?   @db.VarChar
+  ketsuekigata_rh                       String?   @db.VarChar
+  sogo_judge                            String?   @db.VarChar
+  sogo_shoken                           String?   @db.VarChar
+  shinsatsu_judge                       String?   @db.VarChar
+  shinsatsu                             String?   @db.VarChar
+  add_item1                             String?   @db.VarChar
+  shoken1                               String?   @db.VarChar
+  add_item2                             String?   @db.VarChar
+  shoken2                               String?   @db.VarChar
+  add_item3                             String?   @db.VarChar
+  shoken3                               String?   @db.VarChar
+  add_item4                             String?   @db.VarChar
+  shoken4                               String?   @db.VarChar
+  add_item5                             String?   @db.VarChar
+  shoken5                               String?   @db.VarChar
+  taisoku_judge                         String?   @db.VarChar
+  shincho                               String?   @db.VarChar
+  taiju                                 String?   @db.VarChar
+  hukui                                 String?   @db.VarChar
+  hukui_sokuteiho                       String?   @db.VarChar
+  naizoshibo_menseki                    String?   @db.VarChar
+  std_taiju                             String?   @db.VarChar
+  bmi                                   String?   @db.VarChar
+  bmi_judge                             String?   @db.VarChar
+  bmi_shoken                            String?   @db.VarChar
+  taishibo                              String?   @db.VarChar
+  himando                               String?   @db.VarChar
+  himando_judge                         String?   @db.VarChar
+  choryoku_judge                        String?   @db.VarChar
+  choryoku_shoken                       String?   @db.VarChar
+  kaiwaho_r                             String?   @db.VarChar
+  kaiwaho_r_shoken                      String?   @db.VarChar
+  kaiwaho_l                             String?   @db.VarChar
+  kaiwaho_l_shoken                      String?   @db.VarChar
+  choryoku_1000hz_r                     String?   @db.VarChar
+  choryoku_1000hz_l                     String?   @db.VarChar
+  choryoku_4000hz_r                     String?   @db.VarChar
+  choryoku_4000hz_l                     String?   @db.VarChar
+  shiryoku_judge                        String?   @db.VarChar
+  shiryoku_shoken                       String?   @db.VarChar
+  enten_ragan_r                         String?   @db.VarChar
+  enten_ragan_l                         String?   @db.VarChar
+  enten_kyosei_r                        String?   @db.VarChar
+  enten_kyosei_l                        String?   @db.VarChar
+  kinten_ragan_r                        String?   @db.VarChar
+  kinten_ragan_l                        String?   @db.VarChar
+  kinten_kyosei_r                       String?   @db.VarChar
+  kinten_kyosei_l                       String?   @db.VarChar
+  gantei_judge                          String?   @db.VarChar
+  gantei_shoken                         String?   @db.VarChar
+  gantei_h                              String?   @db.VarChar
+  gantei_kw                             String?   @db.VarChar
+  gantei_s                              String?   @db.VarChar
+  gantei_scott                          String?   @db.VarChar
+  ganatsu_judge                         String?   @db.VarChar
+  ganatsu_shoken                        String?   @db.VarChar
+  ganatsu_r                             String?   @db.VarChar
+  ganatsu_l                             String?   @db.VarChar
+  ketsuatsu_judge                       String?   @db.VarChar
+  ketsuatsu_shoken                      String?   @db.VarChar
+  ketsuatsu1_u                          String?   @db.VarChar
+  ketsuatsu1_d                          String?   @db.VarChar
+  ketsuatsu2_u                          String?   @db.VarChar
+  ketsuatsu2_d                          String?   @db.VarChar
+  ketsuatsu_myakuhaku                   String?   @db.VarChar
+  totaisha_judge                        String?   @db.VarChar
+  totaisha_shoken                       String?   @db.VarChar
+  totaisha_shokugo                      String?   @db.VarChar
+  totaisha_ketto                        String?   @db.VarChar
+  totaisha_hba1c                        String?   @db.VarChar
+  totaisha_hba1c_j                      String?   @db.VarChar
+  hakkekyu_judge                        String?   @db.VarChar
+  hakkekyu_shoken                       String?   @db.VarChar
+  hakkekyu_kyusu                        String?   @db.VarChar
+  ketsueki_youketsu                     String?   @db.VarChar
+  ketsueki_nyubi                        String?   @db.VarChar
+  hinketsu_judge                        String?   @db.VarChar
+  hinketsu_ketsueki_syoken              String?   @db.VarChar
+  hinketsu_sekkekyu_kyusu               String?   @db.VarChar
+  hinketsu_kessyokusoryo                String?   @db.VarChar
+  hinketsu_hct                          String?   @db.VarChar
+  hinketsu_mcv                          String?   @db.VarChar
+  hinketsu_mch                          String?   @db.VarChar
+  hinketsu_mchc                         String?   @db.VarChar
+  other_shoken                          String?   @db.VarChar
+  other_kesshoban                       String?   @db.VarChar
+  ibu_xsen_judge                        String?   @db.VarChar
+  ibu_xsen_toeibi                       DateTime? @db.Date
+  ibu_xsen_kubun                        String?   @db.VarChar
+  ibu_xsen_no                           String?   @db.VarChar
+  ibu_xsen_shoken1                      String?   @db.VarChar
+  ibu_xsen_shoken2                      String?   @db.VarChar
+  ibu_xsen_shoken3                      String?   @db.VarChar
+  ibu_xsen_shoken4                      String?   @db.VarChar
+  ibu_xsen_shoken5                      String?   @db.VarChar
+  ibu_xsen_bui                          String?   @db.VarChar
+  ibu_xsen_other                        String?   @db.VarChar
+  naishikyo_judge                       String?   @db.VarChar
+  naishikyo_shoken1                     String?   @db.VarChar
+  naishikyo_shoken2                     String?   @db.VarChar
+  naishikyo_shoken3                     String?   @db.VarChar
+  naishikyo_shoken4                     String?   @db.VarChar
+  naishikyo_shoken5                     String?   @db.VarChar
+  shindenzu_judge                       String?   @db.VarChar
+  shindenzu_shoken1                     String?   @db.VarChar
+  shindenzu_shoken2                     String?   @db.VarChar
+  shindenzu_shoken3                     String?   @db.VarChar
+  shindenzu_shoken4                     String?   @db.VarChar
+  shindenzu_shoken5                     String?   @db.VarChar
+  shindenzu_anseiji1                    String?   @db.VarChar
+  shindenzu_anseiji2                    String?   @db.VarChar
+  shindenzu_anseiji3                    String?   @db.VarChar
+  shindenzu_anseiji4                    String?   @db.VarChar
+  shindenzu_anseiji5                    String?   @db.VarChar
+  kyobu_xsen_judge                      String?   @db.VarChar
+  kyobu_xsen_toeibi                     DateTime? @db.Date
+  kyobu_xsen_kubun                      String?   @db.VarChar
+  kyobu_xsen_no                         String?   @db.VarChar
+  kyobu_xsen_shoken1                    String?   @db.VarChar
+  kyobu_xsen_shoken2                    String?   @db.VarChar
+  kyobu_xsen_shoken3                    String?   @db.VarChar
+  kyobu_xsen_shoken4                    String?   @db.VarChar
+  kyobu_xsen_shoken5                    String?   @db.VarChar
+  kyobu_xsen_bui_shoken_r               String?   @db.VarChar
+  kyobu_xsen_bui_shoken_l               String?   @db.VarChar
+  choonpa_judge                         String?   @db.VarChar
+  choonpa_shoken1                       String?   @db.VarChar
+  choonpa_shoken2                       String?   @db.VarChar
+  choonpa_shoken3                       String?   @db.VarChar
+  choonpa_shoken4                       String?   @db.VarChar
+  choonpa_shoken5                       String?   @db.VarChar
+  choonpa_kanzo                         String?   @db.VarChar
+  choonpa_tanno                         String?   @db.VarChar
+  choonpa_tankan                        String?   @db.VarChar
+  choonpa_jinzo                         String?   @db.VarChar
+  choonpa_suizo                         String?   @db.VarChar
+  choonpa_other                         String?   @db.VarChar
+  choonpa_shinzo                        String?   @db.VarChar
+  choonpa_kanzo_shoken                  String?   @db.VarChar
+  choonpa_tanno_shoken                  String?   @db.VarChar
+  choonpa_tankan_shoken                 String?   @db.VarChar
+  choonpa_jinzo_shoken                  String?   @db.VarChar
+  choonpa_suizo_shoken                  String?   @db.VarChar
+  choonpa_other_shoken                  String?   @db.VarChar
+  choonpa_shinzo_shoken                 String?   @db.VarChar
+  shikikaku_judge                       String?   @db.VarChar
+  shikikaku_shoken                      String?   @db.VarChar
+  kankino_judge                         String?   @db.VarChar
+  kankino_shoken                        String?   @db.VarChar
+  kankino_got                           String?   @db.VarChar
+  kankino_gpt                           String?   @db.VarChar
+  kankino_alp                           String?   @db.VarChar
+  kankino_che                           String?   @db.VarChar
+  kankino_gtp                           String?   @db.VarChar
+  kankino_ldh                           String?   @db.VarChar
+  kankino_ztt                           String?   @db.VarChar
+  kankino_sotanpaku                     String?   @db.VarChar
+  kankino_ag                            String?   @db.VarChar
+  kankino_d_bil                         String?   @db.VarChar
+  kankino_t_bil                         String?   @db.VarChar
+  kankino_hbs                           String?   @db.VarChar
+  kankino_hcv                           String?   @db.VarChar
+  kankino_hcv_value                     String?   @db.VarChar
+  suikino_judge                         String?   @db.VarChar
+  suikino_shoken                        String?   @db.VarChar
+  suikino_amylase                       String?   @db.VarChar
+  ketchushishitsu_judge                 String?   @db.VarChar
+  ketchushishitsu_shoken                String?   @db.VarChar
+  ketchushishitsu_socho                 String?   @db.VarChar
+  ketchushishitsu_chusei                String?   @db.VarChar
+  ketchushishitsu_hdl                   String?   @db.VarChar
+  ketchushishitsu_ldl                   String?   @db.VarChar
+  daicho_judge                          String?   @db.VarChar
+  daicho_shoken                         String?   @db.VarChar
+  daicho_benkessen                      String?   @db.VarChar
+  daicho_hanno1                         String?   @db.VarChar
+  daicho_hanno2                         String?   @db.VarChar
+  kakutan_judge                         String?   @db.VarChar
+  kakutan_shoken                        String?   @db.VarChar
+  nyosan_judge                          String?   @db.VarChar
+  nyosan_shoken                         String?   @db.VarChar
+  nyosan_chi                            String?   @db.VarChar
+  nyosan_naiyo                          String?   @db.VarChar
+  jinkino_judge                         String?   @db.VarChar
+  jinkino_shoken                        String?   @db.VarChar
+  jinkino_nyoso                         String?   @db.VarChar
+  jinkino_cre                           String?   @db.VarChar
+  jinkino_egfr                          String?   @db.VarChar
+  enshokei_judge                        String?   @db.VarChar
+  enshokei_shoken                       String?   @db.VarChar
+  enshokei_crp                          String?   @db.VarChar
+  enshokei_rf_teisei                    String?   @db.VarChar
+  enshokei_rf_teiryo                    String?   @db.VarChar
+  kennyo_judge                          String?   @db.VarChar
+  kennyo_shoken                         String?   @db.VarChar
+  kennyo_tanpaku                        String?   @db.VarChar
+  kennyo_tanpaku_judge                  String?   @db.VarChar
+  kennyo_nyokessen                      String?   @db.VarChar
+  kennyo_nyokessen_judge                String?   @db.VarChar
+  kennyo_nyoto                          String?   @db.VarChar
+  kennyo_nyoto_judge                    String?   @db.VarChar
+  kennyo_nyouro                         String?   @db.VarChar
+  kennyo_nyouro_judge                   String?   @db.VarChar
+  haikinou_judge                        String?   @db.VarChar
+  haikinou_shoken                       String?   @db.VarChar
+  haikinou_haikatsuryo                  String?   @db.VarChar
+  haikinou_doryokuseihaikatsuryo        String?   @db.VarChar
+  haikinou_percentdoryokuseihaikatsuryo String?   @db.VarChar
+  haikinou_hihaikatsuryo                String?   @db.VarChar
+  haikinou_ichibyouryo                  String?   @db.VarChar
+  haikinou_ichibyouritsu                String?   @db.VarChar
+  haikinou_percentichibyouryo           String?   @db.VarChar
+  shikyu_judge                          String?   @db.VarChar
+  shikyu_shoken                         String?   @db.VarChar
+  shikyu_seiri                          String?   @db.VarChar
+  shikyu_saiboushin1                    String?   @db.VarChar
+  shikyu_saiboushin2                    String?   @db.VarChar
+  shikyu_saiboushin_hosoku              String?   @db.VarChar
+  shikyu_shikyunaishin1                 String?   @db.VarChar
+  nyubou_judge                          String?   @db.VarChar
+  nyubou_shoken                         String?   @db.VarChar
+  nyubou_choonpa_r                      String?   @db.VarChar
+  nyubou_choonpa_l                      String?   @db.VarChar
+  nyubou_mammo_r                        String?   @db.VarChar
+  nyubou_mammo_l                        String?   @db.VarChar
+  jikakushojo1                          String?   @db.VarChar
+  jikakushojo2                          String?   @db.VarChar
+  jikakushojo3                          String?   @db.VarChar
+  option_kensabi                        DateTime? @db.Date
+  option_abi                            String?   @db.VarChar
+  option_holter                         String?   @db.VarChar
+  sangyoi_judge                         String?   @db.VarChar
+  sangyoi_mei                           String?   @db.VarChar
+  judge_date                            DateTime? @db.Date
+  saikensa_result                       String?   @db.VarChar
+  saikensa_ryoshusho                    String?   @db.VarChar
+  saikensa_other                        String?   @db.VarChar
+  saikensa_temp1                        String?   @db.VarChar
+  saikensa_temp2                        String?   @db.VarChar
+  saikensa_temp3                        String?   @db.VarChar
+  saikensa_tsuchibi                     DateTime? @db.Date
+  saikensa_jushinbi                     DateTime? @db.Date
+  saikensa_shiji                        String?   @db.VarChar
+  hantei_yellowcard                     String?   @db.VarChar
+  hantei_metabo                         String?   @db.VarChar
+  hantei_option                         String?   @db.VarChar
+  hantei_other                          String?   @db.VarChar
+  shanaijudge_bmi                       String?   @db.VarChar
+  shanaishoken_bmi                      String?   @db.VarChar
+  shanaijudge_hukui                     String?   @db.VarChar
+  shanaishoken_hukui                    String?   @db.VarChar
+  shanaijudge_ketsuatsu                 String?   @db.VarChar
+  shanaishoken_ketsuatsu                String?   @db.VarChar
+  shanaijudge_ketto                     String?   @db.VarChar
+  shanaishoken_ketto                    String?   @db.VarChar
+  shanaijudge_hba1c                     String?   @db.VarChar
+  shanaishoken_hba1c                    String?   @db.VarChar
+  shanaijudge_sekkekyusu                String?   @db.VarChar
+  shanaishoken_sekkekyusu               String?   @db.VarChar
+  shanaijudge_kessyokusoryo             String?   @db.VarChar
+  shanaishoken_kessyokusoryo            String?   @db.VarChar
+  shanaijudge_got                       String?   @db.VarChar
+  shanaishoken_got                      String?   @db.VarChar
+  shanaijudge_gpt                       String?   @db.VarChar
+  shanaishoken_gpt                      String?   @db.VarChar
+  shanaijudge_gtp                       String?   @db.VarChar
+  shanaishoken_gtp                      String?   @db.VarChar
+  shanaijudge_chusei                    String?   @db.VarChar
+  shanaishoken_chusei                   String?   @db.VarChar
+  shanaijudge_hdl                       String?   @db.VarChar
+  shanaishoken_hdl                      String?   @db.VarChar
+  shanaijudge_ldl                       String?   @db.VarChar
+  shanaishoken_ldl                      String?   @db.VarChar
+  shanaijudge_nyotanpaku                String?   @db.VarChar
+  shanaishoken_nyotanpaku               String?   @db.VarChar
+  shanaijudge_nyoto                     String?   @db.VarChar
+  shanaishoken_nyoto                    String?   @db.VarChar
+  hukuyaku_ketsuatsu                    String?   @db.VarChar
+  hukuyaku_kettou                       String?   @db.VarChar
+  hukuyaku_shishitsu                    String?   @db.VarChar
+  tokutei_hoken_level                   String?   @db.VarChar
+  sakujo_flag                           String?   @db.VarChar
+
+  @@index([error_tourokubi, error_koushinbi, kenshinbi, shain_cd], map: "ht007_kenshinkekka_reg_error_error_tourokubi_idx")
+}
