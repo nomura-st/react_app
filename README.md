@@ -54,6 +54,7 @@ Or to use specific schema file (and .env in the same directory)
 ```
 npx prisma db pull --schema=./prisma/test/schema.prisma
 npx prisma generate --schema=./prisma/test/schema.prisma
+npx prisma studio  --schema=./prisma/test/schema.prisma
 ```
 
 ### GUI DB Viewer
