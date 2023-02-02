@@ -1,4 +1,6 @@
 import { WorkerInfo } from "../../types";
+import TableCol from "./TableCol";
+import TableColCheck from "./TableColCheck";
 import WorkerRow from "./WorkerRow";
 
 /**
@@ -8,19 +10,28 @@ import WorkerRow from "./WorkerRow";
  */
 const WorkerList = (props: { workers: WorkerInfo[] }) => {
   return (
-    <div className="overflow-x-auto w-full">
+    <div className="w-full">
       <table className="table w-full">
         <thead>
           <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <th>ID</th>
-            <th>名前</th>
-            <th>誕生日</th>
-            <th></th>
+            <TableCol isHeader={true}>
+              <TableColCheck header="対象" />
+            </TableCol>
+            <TableCol isHeader={true}>ID</TableCol>
+            <TableCol isHeader={true}>
+              <div>名前</div>
+              <div>名前</div>
+            </TableCol>
+            <TableCol isHeader={true}>
+              <div>誕生日</div>
+              <div>誕生日</div>
+            </TableCol>
+            <TableCol isHeader={true}>会社情報</TableCol>
+            <TableCol isHeader={true}>会社情報</TableCol>
+            <TableCol isHeader={true}>会社情報</TableCol>
+            <TableCol isHeader={true}>AAA</TableCol>
+            <TableCol isHeader={true}>BBB</TableCol>
+            <TableCol isHeader={true}>詳細へ</TableCol>
           </tr>
         </thead>
         <tbody>

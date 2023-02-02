@@ -6,7 +6,7 @@ import "./index.css";
 // TODO:テストデータ
 const workers = [1, 2, 3].map((id) => ({
   id: `${id}`,
-  name: `社員${id}`,
+  name: `社員 太郎AAA${id}`,
   birthday: new Date(2020, 1, id),
   office: {
     id: `${id + 10}`,
