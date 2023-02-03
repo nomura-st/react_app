@@ -43,7 +43,9 @@ reproductions/*
 !reproductions/tracing
 !reproductions/pnpm-workspace.yaml
 
-dev.db
-dev.db-journal
+*.db
+*.db-journal
 junit.xml
 /output.txt
+
+generated
