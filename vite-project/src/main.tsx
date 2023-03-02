@@ -1,10 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import { Suspense } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+import routes from "~react-pages";
+
+const App = () => {
+  return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
+};
+
+ReactDOM.render(
+  <Router>
     <App />
-  </React.StrictMode>,
-)
+  </Router>,
+  document.getElementById("root")
+);
