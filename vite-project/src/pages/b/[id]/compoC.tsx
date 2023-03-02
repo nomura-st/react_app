@@ -6,7 +6,7 @@ function Compo() {
   const location = useLocation();
   return (
     <>
-      <h2>Dinamic Routing :ID ={id}</h2>
+      <h2>CompoC :ID ={id}</h2>
       <h3>{location.pathname}</h3>
     </>
   );

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 
@@ -41,7 +40,10 @@ function Compo() {
         <Link to={"/b/2"}>Root(/b/2)</Link>
       </li>
       <li>
-        <Link to={"/b/2"}>Root(/b/notfound)</Link>
+        <Link to={"/b/2/compoC"}>Root(/b/2/compoC)</Link>
+      </li>
+      <li>
+        <Link to={"/b/notfound"}>Root(/b/notfound)</Link>
       </li>
     </ul>
   );
