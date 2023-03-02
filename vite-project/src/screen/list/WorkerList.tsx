@@ -8,26 +8,11 @@ import WorkerRow from "./WorkerRow";
  */
 const WorkerList = (props: { workers: WorkerInfo[] }) => {
   return (
-    <div className="overflow-x-auto w-full">
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th>
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
-            </th>
-            <th>ID</th>
-            <th>名前</th>
-            <th>誕生日</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.workers.map((w) => (
-            <WorkerRow key={w.id} worker={w}></WorkerRow>
-          ))}
-        </tbody>
+    <div>
+      <table>
+        {props.workers.map((w) => (
+          <WorkerRow worker={w}></WorkerRow>
+        ))}
       </table>
     </div>
   );
