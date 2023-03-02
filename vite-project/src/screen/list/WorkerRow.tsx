@@ -1,5 +1,5 @@
 import { WorkerInfo } from "../../types";
-import DatePick from "../parts/DatePick";
+import DatePick from "../DatePick";
 import TableCol from "./TableCol";
 import TableColCheck from "./TableColCheck";
 
