@@ -5,7 +5,7 @@ import { OfficeInfo } from "./OfficeInfo";
  */
 export type WorkerInfo = {
   id: string;
-  name: string | null;
-  birthday: Date | null;
-  officeId: string | null;
+  name: string;
+  birthday: Date;
+  office: OfficeInfo;
 };

@@ -1,14 +1,12 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated/db_append"
+  output   = "./generated/db2"
 }
 
-datasource db_append {
+datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL_APPEND")
-}
-
-model OfficeInfo {
-  id   String   @id 
-  name String?
 }
