@@ -1,0 +1,46 @@
+post:
+  operationId: maker_create
+  summary: Marker登録API
+  description: Marker登録APIです
+  tags:
+    - marker
+  requestBody:
+    description: "登録内容"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            datetime:
+              description: 登録日付
+              type: string
+              format: date-time
+              required: true
+              example: 2022-11-06T19:20:30+01:00
+            lat:
+              description: 緯度(latitude)
+              type: number
+              example: 35.360652
+            lng:
+              description: 経度(longitude)
+              type: number
+              example: 138.727323
+            alt:
+              description: 高度(altitude)
+              type: number
+              example: 3772.123
+            comment:
+                $ref: "../Comment.yml"
+            imageId:
+              description: 画像ID
+              type: integer
+              example: 100101
+
+  responses:
+    "200":
+      description: 成功した場合
+      content:
+        application/json:
+          schema:
+            $ref: "../Marker.yml"
+            

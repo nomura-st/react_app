@@ -4,28 +4,20 @@ info:
   description: "BackEndのREST API仕様です"
   version: 1.0.0
 servers:
-  - url: http://127.0.0.1:3000/
+  - url: http://localhost:{port}/
+    description: 開発環境
+    variables:
+      port:
+        enum:
+          - '3000'
+        default: '3000'
+        description: ポート番号
+tags: 
+- name: marker
+  description: Marker操作のAPIグループ
+
 paths:
   /marker/{id}:
-    get:
-      operationId: get_maker_by_id
-      summary: IDを指定してMarkerを取得する
-      parameters:
-        - name: id
-          in: path
-          required: true
-          example: 100
-          schema:
-            type: integer
-      responses:
-        "200":
-          description: 成功した場合
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Marker"
-components:
-  # Reusable schemas (data models)
-  schemas:
-    Marker:
-      $ref: "./components/Marker.yml"
+    $ref: "./components/requests/maker_by_id.yml"
+  /marker/create:
+    $ref: "./components/requests/maker_create.yml"

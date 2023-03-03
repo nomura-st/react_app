@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "mockapi": "prism mock openapi/api.yml -p 3000 --cors",
-    "doc": "redoc-cli build openapi/api.yml --output doc/api/swagger.html"
+    "doc": "redoc-cli build openapi/api.yml --output doc/api/API仕様書.html"
   },
   "dependencies": {
     "@stoplight/prism-cli": "^4.10.6",
