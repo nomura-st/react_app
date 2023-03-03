@@ -8,7 +8,8 @@
     "test": "vitest run",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "mockapi": "prism mock openapi/api.yml -p 3000 --cors"
+    "mockapi": "prism mock openapi/api.yml -p 3000 --cors",
+    "doc": "redoc-cli build openapi/api.yml --output doc/api/swagger.html"
   },
   "dependencies": {
     "@stoplight/prism-cli": "^4.10.6",
@@ -27,6 +28,7 @@
     "daisyui": "^2.50.0",
     "jsdom": "^21.1.0",
     "postcss": "^8.4.21",
+    "redoc-cli": "^0.13.20",
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.2.4",
     "ts-node": "^10.9.1",
