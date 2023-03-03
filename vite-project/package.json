@@ -7,9 +7,11 @@
     "dev": "vite",
     "test": "vitest run",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "mockapi": "prism mock openapi/api.yml -p 3000 --cors"
   },
   "dependencies": {
+    "@stoplight/prism-cli": "^4.10.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.8.2",
