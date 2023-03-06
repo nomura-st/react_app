@@ -1,17 +1,18 @@
 type: object
 description: Markerオブジェクト
+required:
+  - id
+  - datetime
 properties:
   id:
     description: ID
     type: integer
     format: int64
-    required: true
     example: 100
   datetime:
     description: 登録日付
     type: string
     format: date-time
-    required: true
     example: 2022-11-06T19:20:30+01:00
   lat:
     description: 緯度(latitude)

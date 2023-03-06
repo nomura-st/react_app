@@ -10,12 +10,13 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - datetime
           properties:
             datetime:
               description: 登録日付
               type: string
               format: date-time
-              required: true
               example: 2022-11-06T19:20:30+01:00
             lat:
               description: 緯度(latitude)
