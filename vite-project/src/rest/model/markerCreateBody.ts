@@ -7,7 +7,7 @@
  */
 import type { CommentYml } from './components-Comment.yml/commentYml';
 
-export type MakerCreateBody = {
+export type MarkerCreateBody = {
   /** 登録日付 */
   datetime: string;
   /** 緯度(latitude) */

@@ -9,7 +9,9 @@ export default defineConfig({
       mode: "split",
       target: "./src/rest/api.ts",
       schemas: "./src/rest/model",
+      client: "react-query",
       mock: true,
+      clean: true,
     },
   },
 });

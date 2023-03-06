@@ -1,5 +1,5 @@
 get:
-  operationId: maker_by_id
+  operationId: marker_by_id
   summary: Marker取得API(ID指定)
   description: Marker取得API(ID指定)です
   tags:

@@ -1,5 +1,5 @@
 post:
-  operationId: maker_create
+  operationId: marker_create
   summary: Marker登録API
   description: Marker登録APIです
   tags:

@@ -12,21 +12,21 @@ import {
   faker
 } from '@faker-js/faker'
 
-export const getMakerCreateMock = () => ({id: faker.datatype.number({min: undefined, max: undefined}), datetime: `${faker.date.past().toISOString().split('.')[0]}Z`, lat: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), lng: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), alt: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), comment: faker.helpers.arrayElement([{}, undefined]), imageId: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
+export const getMarkerCreateMock = () => ({id: faker.datatype.number({min: undefined, max: undefined}), datetime: `${faker.date.past().toISOString().split('.')[0]}Z`, lat: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), lng: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), alt: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), comment: faker.helpers.arrayElement([{}, undefined]), imageId: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
 
-export const getMakerByIdMock = () => ({id: faker.datatype.number({min: undefined, max: undefined}), datetime: `${faker.date.past().toISOString().split('.')[0]}Z`, lat: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), lng: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), alt: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), comment: faker.helpers.arrayElement([{}, undefined]), imageId: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
+export const getMarkerByIdMock = () => ({id: faker.datatype.number({min: undefined, max: undefined}), datetime: `${faker.date.past().toISOString().split('.')[0]}Z`, lat: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), lng: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), alt: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), comment: faker.helpers.arrayElement([{}, undefined]), imageId: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
 
 export const getRestApi仕様MSW = () => [
 rest.post('*/marker/create', (_req, res, ctx) => {
         return res(
           ctx.delay(1000),
           ctx.status(200, 'Mocked status'),
-ctx.json(getMakerCreateMock()),
+ctx.json(getMarkerCreateMock()),
         )
       }),rest.get('*/marker/:id', (_req, res, ctx) => {
         return res(
           ctx.delay(1000),
           ctx.status(200, 'Mocked status'),
-ctx.json(getMakerByIdMock()),
+ctx.json(getMarkerByIdMock()),
         )
       }),]

@@ -18,6 +18,6 @@ tags:
 
 paths:
   /marker/create:
-    $ref: "./components/requests/maker_create.yml"
+    $ref: "./components/requests/marker_create.yml"
   /marker/{id}:
-    $ref: "./components/requests/maker_by_id.yml"
+    $ref: "./components/requests/marker_by_id.yml"
