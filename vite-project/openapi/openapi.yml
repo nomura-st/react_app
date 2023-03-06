@@ -17,7 +17,7 @@ tags:
   description: Marker操作のAPIグループ
 
 paths:
-  /marker/{id}:
-    $ref: "./components/requests/maker_by_id.yml"
   /marker/create:
     $ref: "./components/requests/maker_create.yml"
+  /marker/{id}:
+    $ref: "./components/requests/maker_by_id.yml"
