@@ -13,8 +13,8 @@ import type { CommentYml } from '../components-Comment.yml/commentYml';
 export interface MarkerYml {
   /** ID */
   id: number;
-  /** 登録日付 */
-  datetime: string;
+  /** 登録日付(Unixミリ秒) */
+  datetime: number;
   /** 緯度(latitude) */
   lat?: number;
   /** 経度(longitude) */

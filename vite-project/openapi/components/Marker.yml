@@ -10,10 +10,10 @@ properties:
     format: int64
     example: 100
   datetime:
-    description: 登録日付
-    type: string
-    format: date-time
-    example: 2022-11-06T19:20:30+01:00
+    description: 登録日付(Unixミリ秒)
+    type: integer
+    format: int64
+    example: 1678150618427
   lat:
     description: 緯度(latitude)
     type: number
